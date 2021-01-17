@@ -1,3 +1,17 @@
-h1, p {
-  font-family: Lato;
+* {
+  box-sizing: border-box;
+  font-family: Sans-Serif;
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  padding: 1.5rem;
+  flex: 1;
 }
