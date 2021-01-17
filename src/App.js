@@ -6,13 +6,13 @@ import "./style.css";
 export default function App() {
   return (
     <div class="container">
-      <Header />
-      <main>
-        content
-        <p>jdhfjshjjjjjjjjjjjjjjjj</p>
-        <p>jdhfjshjjjjjjjjjjjjjjjj</p>
-      </main>
-      <Footer />
+      <div class="header">
+        <Header />
+      </div>
+      <main />
+      <div class="footer">
+        <Footer />
+      </div>
     </div>
   );
 }
