@@ -1,6 +1,10 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+
+import { connect } from "react-redux";
+import * as loginAction from "../../store/user/actions";
+
 import "./LoginForm.scss";
 
 const LoginPage = () => (
@@ -79,4 +83,19 @@ const LoginPage = () => (
   </div>
 );
 
-export default LoginPage;
+const mapStateToProps = state => {
+  return {
+    userStore: state.user
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: () => dispatch(loginAction.requestLogin)
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LoginPage);
