@@ -2,9 +2,14 @@ import React from "react";
 import { Image } from "react-bootstrap";
 
 function NotFound() {
+  const imageUrl = "./assets/404.png"
   return (
-    <div>
-      <Image
+    <div
+      style={{
+        backgroundImage: `url(${imageUrl})`
+      }}
+    >
+      <img
         src=""
         alt="Page not found"
         className="img-responsive center-block"
