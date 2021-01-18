@@ -1,6 +1,7 @@
 import * as types from "./types";
 import axios from "axios";
 import { put, takeEvery, call } from "redux-saga/effects";
+import ProductImg from "../../../assets/";
 
 /** Actions */
 export function requestLogin(values) {
@@ -39,28 +40,27 @@ function* login(action) {
     const loginData = action.payload;
     const response = yield call(fetchLogin, loginData);
     console.log("Login Request Result:", response);
+    //Mocking login scenario
+    let status = "OK";
+    if (status === "OK") {
+      const data = getUserData();
+      console.log("User Data:", data);
+      yield put(setUserData(data));
+    }
   } catch (error) {
     console.log("[LOGIN-REQUEST]- Catching Error:", error.message);
   }
 }
 
-function* getUserData() {
-  try {
-    const products = yield axiosInstance.get("/products");
-    const { total_count, items_per_page } = products.data.pagination_meta;
-    const totalPages = Math.ceil(total_count / items_per_page);
-    const data = {
-      allProducts: products.data.products,
-      pagination_meta: {
-        totalPages: totalPages,
-        totalItems: total_count,
-        pageLimit: items_per_page
-      }
-    };
-    yield put(setAllProducts(data));
-  } catch (error) {
-    console.log("[ALL-PRODUCTS-REQUEST]- Catching Error:", error.message);
-  }
+function getUserData() {
+  const data = {
+    userImg: "",
+    name: "Candidate Full Name",
+    email: "Candidate@techno-builder.com",
+    dateOfBirth: "1 Jan 1990",
+    phone: "012345678"
+  };
+  return data;
 }
 
 export function* loginSideEffects() {
