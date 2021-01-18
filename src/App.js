@@ -1,9 +1,11 @@
-import React from "react";
-import { Router, IndexRoute, Route } from "react-router";
+import React, { Suspense } from "react";
+import { Router, IndexRoute, Route, Switch } from "react-router";
 import history from "./history";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import LoginPage from "./pages/login/LoginForm";
+import NotFound from "./pages/notFound/NotFound";
+import Loader from "./components/loader/Loader";
 import "./style.css";
 
 export default function App() {
@@ -13,9 +15,14 @@ export default function App() {
         <Header />
       </div>
       <main>
-        <Router history={history}>
-          <Route path="/" component={LoginPage} />
-        </Router>
+        <Suspense fallback={<Loader />}>
+          <Router history={history}>
+            <Switch>
+              <Route path="/" exact component={LoginPage} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </Router>
+        </Suspense>
       </main>
       <div className="footer">
         <Footer />
