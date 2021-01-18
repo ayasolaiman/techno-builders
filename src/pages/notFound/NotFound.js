@@ -1,7 +1,7 @@
 import React from "react";
 
 function NotFound() {
-  const notFound = "./../404.png";
+  const notFound = "./../../assets/images/404.png";
   return (
     <div
       style={{
