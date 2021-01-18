@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   userData: {}
 };
 
-export default function user(state = INITIAL_STATE, action) {
+export default function userReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case types.SET_USER_DATA:
       return {
