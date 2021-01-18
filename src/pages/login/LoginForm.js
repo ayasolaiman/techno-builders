@@ -9,7 +9,6 @@ import "./LoginForm.scss";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const [input, setInput] = useState({});
   return (
     <div className="login-container">
       <div className="form-header">
@@ -20,7 +19,6 @@ const LoginPage = () => {
           initialValues={{ email: "", password: "" }}
           onSubmit={(values, { setSubmitting }) => {
             console.log("Logging in", values);
-            setInput(values);
             dispatch(requestLogin(values));
             setSubmitting(false);
           }}

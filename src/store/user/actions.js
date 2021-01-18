@@ -2,9 +2,10 @@ import * as types from "./types";
 import { put, takeEvery } from "redux-saga/effects";
 
 /** Actions */
-export function requestLogin() {
+export function requestLogin(values) {
   return {
-    type: types.LOGIN_REQUEST
+    type: types.LOGIN_REQUEST,
+    payload: values
   };
 }
 
@@ -15,9 +16,19 @@ export function setUserData(data) {
   };
 }
 
+const loginURL = "http://41.38.70.8:8003/api/method/login";
+
 /** Sagas */
-function* login() {
-  console.log("User Data:");
+function* login(action) {
+  try {
+    const request = yield fetch(loginURL, {
+      method: "POST",
+      body: JSON.stringify(action.payload)
+    });
+    console.log("Login Request Result:", request);
+  } catch (error) {
+    console.log("[LOGIN-REQUEST]- Catching Error:", error.message);
+  }
 }
 
 function* getUserData() {
