@@ -1,7 +1,7 @@
 import * as types from "./types";
 import axios from "axios";
 import { put, takeEvery, call } from "redux-saga/effects";
-import ProductImg from "../../../assets/";
+import ProfileImg from "../../../assets/images/avatar.png";
 
 /** Actions */
 export function requestLogin(values) {
@@ -54,7 +54,7 @@ function* login(action) {
 
 function getUserData() {
   const data = {
-    userImg: "",
+    userImg: ProfileImg,
     name: "Candidate Full Name",
     email: "Candidate@techno-builder.com",
     dateOfBirth: "1 Jan 1990",
