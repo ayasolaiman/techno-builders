@@ -1,4 +1,5 @@
 import * as types from "./types";
+import axios from "axios";
 import { put, takeEvery, call } from "redux-saga/effects";
 
 /** Actions */
@@ -17,24 +18,26 @@ export function setUserData(data) {
 }
 
 /** Fetching */
-async function fetchLogin(action) {
+async function fetchLogin(loginData) {
   try {
-    const loginData = action.payload;
-    const request = await fetch("http://41.38.70.8:8003/api/method/login", {
-      method: "POST",
-      body: loginData
-    });
-    console.log("Fetch result:", request);
+    const request = await axios.post(
+      "http://41.38.70.8:8003/api/method/login",
+      {
+        usr: loginData.email,
+        pwd: loginData.password
+      }
+    );
+    console.log("Request Result:", request);
   } catch (err) {
-    console.log("[LOGIN-REQUEST]- Catching Error:", error);
-    return err;
+    console.log("[FETCH-REQUEST]- Catching Error:", err.message);
   }
 }
+
 /** Sagas */
 function* login(action) {
   try {
-    console.log("action payload:", action.payload);
-    const response = yield call();
+    const loginData = action.payload;
+    const response = yield call(fetchLogin, loginData);
     console.log("Login Request Result:", response);
   } catch (error) {
     console.log("[LOGIN-REQUEST]- Catching Error:", error.message);
