@@ -1,7 +1,7 @@
 import * as types from "./types";
 import axios from "axios";
 import { put, takeEvery, call } from "redux-saga/effects";
-import ProfileImg from "../../../assets/images/avatar.png";
+import avatar from "./../assets/images/avatar.png";
 
 /** Actions */
 export function requestLogin(values) {
@@ -21,13 +21,10 @@ export function setUserData(data) {
 /** Fetching */
 async function fetchLogin(loginData) {
   try {
-    const request = await axios.post(
-      "http://41.38.70.8:8003/api/method/login",
-      {
-        usr: loginData.email,
-        pwd: loginData.password
-      }
-    );
+    const request = await axios.post("41.38.70.8:8003/api/method/login", {
+      usr: loginData.email,
+      pwd: loginData.password
+    });
     console.log("Request Result:", request);
   } catch (err) {
     console.log("[FETCH-REQUEST]- Catching Error:", err.message);
@@ -54,7 +51,7 @@ function* login(action) {
 
 function getUserData() {
   const data = {
-    userImg: ProfileImg,
+    userImg: "",
     name: "Candidate Full Name",
     email: "Candidate@techno-builder.com",
     dateOfBirth: "1 Jan 1990",
