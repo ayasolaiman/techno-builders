@@ -10,7 +10,7 @@
   overflow: auto;
   width: 100%;
   padding-top: 100px;
-  padding-bottom: 30px;
+  padding-bottom: 100px;
   flex-direction: column;
 }
 
@@ -29,9 +29,11 @@
 
 main {
   margin: auto;
-  padding: 30px 40px;
+  width: 65%;
+  max-width: 450px;
+  min-width: 250px;
+  display: flex;
   background: white;
   box-shadow: 0px 0px 20px #00000033;
-  border-radius: 20px;
   opacity: 1;
 }
