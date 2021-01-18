@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  Router,
-  IndexRoute,
-  Route,
-  HomeRoute,
-  browserHistory
-} from "react-router";
-
+import { Router, IndexRoute, Route } from "react-router";
+import history from "./history";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import LoginPage from "./pages/login/LoginForm";
@@ -19,8 +13,8 @@ export default function App() {
         <Header />
       </div>
       <main>
-        <Router history={browserHistory}>
-          <HomeRoute path="/" component={LoginPage} />
+        <Router history={history}>
+          <Route path="/" component={LoginPage} />
         </Router>
       </main>
       <div className="footer">
