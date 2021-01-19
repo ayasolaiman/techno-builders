@@ -4,13 +4,12 @@ import * as Yup from "yup";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogin } from "../../store/user/actions";
+import history from "./../history";
 
 import "./LoginForm.scss";
 
 const LoginPage = props => {
   const dispatch = useDispatch();
-  const { history } = props;
-
   return (
     <div className="login-container">
       <div className="form-header">

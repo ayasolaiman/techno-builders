@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 //import { Router, IndexRoute, Switch } from "react-router";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
+import history from "./history";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Loader from "./components/loader/Loader";
@@ -18,11 +19,13 @@ export default function App() {
         <Header />
       </div>
       <main>
-        <Switch>
-          <Route path="/" exact component={LoginPage} />
-          <Route path="/profile" exact component={Profile} />
-          <Route path="*" component={NotFound} />
-        </Switch>
+        <Router history={history}>
+          <Switch>
+            <Route path="/" exact component={LoginPage} />
+            <Route path="/profile" exact component={Profile} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </Router>
       </main>
       <div className="footer">
         <Footer />
