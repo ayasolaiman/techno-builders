@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogin } from "../../store/user/actions";
 
@@ -88,4 +88,4 @@ const LoginPage = props => {
   );
 };
 
-export default LoginPage;
+export default withRouter(LoginPage);

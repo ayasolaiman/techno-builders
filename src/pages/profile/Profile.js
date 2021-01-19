@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { requestLogout } from "../../store/user/actions";
 
 import "./Profile.scss";
@@ -17,6 +17,7 @@ class Profile extends React.Component {
 
   render() {
     const userData = this.props.user;
+    const { history, location } = this.props;
     console.log("User Data:", userData);
 
     const handleLogout = () => {
@@ -66,4 +67,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Profile);
+)(withRouter(Profile));
