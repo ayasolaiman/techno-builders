@@ -11,7 +11,8 @@ export default function userReducer(state = INITIAL_STATE, action) {
     case types.SET_USER_DATA:
       return {
         ...state,
-        userData: action.data
+        userData: action.data,
+        authed: true
       };
     default:
       return state;

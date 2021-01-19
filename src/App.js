@@ -18,14 +18,12 @@ export default function App() {
         <Header />
       </div>
       <main>
-        <NotFound />
         <Suspense fallback={<Loader />}>
           <Router history={history}>
             <Switch>
-              {/*<Route path="/" exact component={LoginPage} />
+              <Route path="/" exact component={LoginPage} />
               <Route path="/profile" exact component={Profile} />
               <Route path="*" component={NotFound} />
-            */}
             </Switch>
           </Router>
         </Suspense>

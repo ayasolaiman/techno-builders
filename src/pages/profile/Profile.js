@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import "./Profile.scss";
 
@@ -21,10 +22,10 @@ class Profile extends React.Component {
         <div className="prof-body">
           <h3>Account Details</h3>
           <p>
-            <span>Name: </span>test name
+            <span>Name: </span>{}
           </p>
           <p>
-            <span>Email: </span>test@mail.com
+            <span>Email: </span>{}
           </p>
           <p>
             <span>Birth date: </span>16 Jan 1994
@@ -38,5 +39,12 @@ class Profile extends React.Component {
     );
   }
 }
-
-export default Profile;
+const mapStateToProps = state => {
+  return {
+    user: state.userData
+  };
+};
+export default connect(
+  mapStateToProps,
+  null
+)(Profile);

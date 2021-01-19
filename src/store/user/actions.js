@@ -21,10 +21,13 @@ export function setUserData(data) {
 /** Fetching */
 async function fetchLogin(loginData) {
   try {
-    const request = await axios.post("41.38.70.8:8003/api/method/login", {
-      usr: loginData.email,
-      pwd: loginData.password
-    });
+    const request = await axios.post(
+      "http://41.38.70.8:8003/api/method/login",
+      {
+        usr: loginData.email,
+        pwd: loginData.password
+      }
+    );
     console.log("Request Result:", request);
   } catch (err) {
     console.log("[FETCH-REQUEST]- Catching Error:", err.message);

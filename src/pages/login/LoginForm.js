@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -7,7 +7,7 @@ import { requestLogin } from "../../store/user/actions";
 
 import "./LoginForm.scss";
 
-const LoginPage = () => {
+const LoginPage = props => {
   const dispatch = useDispatch();
   return (
     <div className="login-container">
@@ -17,10 +17,13 @@ const LoginPage = () => {
       <div className="form-body">
         <Formik
           initialValues={{ email: "", password: "" }}
-          onSubmit={(values, { setSubmitting }) => {
-            console.log("Logging in", values);
-            dispatch(requestLogin(values));
+          onSubmit={async (values, { setSubmitting }) => {
+            console.log("Logging in:", values, props);
+            await dispatch(requestLogin(values));
             setSubmitting(false);
+            if (props.state.authed) {
+              props.history.replace("/profile");
+            }
           }}
           //********Using Yum for validation********/
           validationSchema={Yup.object().shape({
