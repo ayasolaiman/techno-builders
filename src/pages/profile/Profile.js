@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { requestLogout } from "../../store/user/actions";
 
 import "./Profile.scss";
 
@@ -10,41 +11,54 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    console.log("Profile props:", this.props);
+    console.log("Profile props:", this.props.user);
   }
 
+  handleLogout() {}
+
   render() {
+    const userData = JSON.stringify(this.props.user.userData);
+    console.log("User Data:", userData);
     return (
       <div className="prof-container">
         <div className="prof-header">
-          <img src="" alt="Profile image" />
+          <img src={userData.userImg} alt="Profile image" />
         </div>
         <div className="prof-body">
           <h3>Account Details</h3>
           <p>
-            <span>Name: </span>{}
+            <span>Name: </span>
+            {userData.name}
           </p>
           <p>
-            <span>Email: </span>{}
+            <span>Email: </span>
+            {userData.email}
           </p>
           <p>
-            <span>Birth date: </span>16 Jan 1994
+            <span>Birth date: </span>
+            {userData.dateOfBirth}
           </p>
           <p>
-            <span>Phone number: </span>01234567
+            <span>Phone number: </span>
+            {userData.phone}
           </p>
         </div>
-        <button>Logout</button>
+        <button onClick={this.handleLogout}>Logout</button>
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    user: state.userData
+    user: state.user
   };
 };
+
+const mapDispatchToProps = dispatch => ({
+  logOut: () => dispatch(productsActions.requestLogout())
+});
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Profile);
