@@ -4,10 +4,11 @@ import { put, takeEvery, call } from "redux-saga/effects";
 import avatar from "./../assets/images/avatar.png";
 
 /** Actions */
-export function requestLogin(values) {
+export function requestLogin(values, history) {
   return {
     type: types.LOGIN_REQUEST,
-    payload: values
+    payload: values,
+    history
   };
 }
 
@@ -58,7 +59,9 @@ function* login(action) {
     if (status === "OK") {
       const data = getUserData();
       console.log("User Data:", data);
+      console.log("History:", action.history);
       yield put(setUserData(data));
+      action.history.replace("/profile");
     }
   } catch (error) {
     console.log("[LOGIN-REQUEST]- Catching Error:", error.message);
@@ -78,7 +81,7 @@ function getUserData() {
 }
 
 function* logout() {
-  console.log('Logging out!!')
+  console.log("Logging out!!");
   yield put(clearData());
 }
 

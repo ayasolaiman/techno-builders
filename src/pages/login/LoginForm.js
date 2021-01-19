@@ -18,12 +18,10 @@ const LoginPage = props => {
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log("Logging in:", values, props);
-            await dispatch(requestLogin(values));
+            console.log("Logging in:", values, props.history);
+            let history = props.history;
+            dispatch(requestLogin(values, history));
             setSubmitting(false);
-            if (props.state.authed) {
-              props.history.replace("/profile");
-            }
           }}
           //********Using Yum for validation********/
           validationSchema={Yup.object().shape({

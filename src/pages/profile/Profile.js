@@ -14,11 +14,14 @@ class Profile extends React.Component {
     console.log("Profile props:", this.props.user);
   }
 
-  handleLogout() {}
-
   render() {
     const userData = JSON.stringify(this.props.user.userData);
     console.log("User Data:", userData);
+
+    const handleLogout = () => {
+      this.props.logOut();
+      this.props.history.push("/");
+    };
     return (
       <div className="prof-container">
         <div className="prof-header">
@@ -43,7 +46,7 @@ class Profile extends React.Component {
             {userData.phone}
           </p>
         </div>
-        <button onClick={this.handleLogout}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     );
   }
@@ -55,7 +58,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  logOut: () => dispatch(productsActions.requestLogout())
+  logOut: () => dispatch(requestLogout())
 });
 
 export default connect(

@@ -5,7 +5,7 @@ function NotFound() {
   const notFound =
     "https://cdn.iconscout.com/icon/free/png-256/404-page-not-found-456876.png";
   return (
-    <div class="not-found">
+    <div className="not-found">
       <img src={notFound} alt="Not Found" />
     </div>
   );
