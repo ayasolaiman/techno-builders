@@ -8,7 +8,7 @@ import { requestLogin } from "../../store/user/actions";
 import "./LoginForm.scss";
 
 const LoginPage = props => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   return (
     <div className="login-container">
       <div className="form-header">
@@ -20,7 +20,7 @@ const LoginPage = props => {
           onSubmit={async (values, { setSubmitting }) => {
             console.log("Logging in:", values, props);
             //dispatch(requestLogin(values));
-            props.history.replace("/profile");
+            props.history.push("/profile");
             setSubmitting(false);
           }}
           //********Using Yum for validation********/
