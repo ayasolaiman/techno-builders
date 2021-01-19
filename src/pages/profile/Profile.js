@@ -19,8 +19,8 @@ class Profile extends React.Component {
     console.log("User Data:", userData);
 
     const handleLogout = () => {
-      this.props.logOut();
       this.props.history.push("/");
+      this.props.logOut();
     };
     return (
       <div className="prof-container">

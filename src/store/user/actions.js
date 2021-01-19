@@ -1,13 +1,14 @@
 import * as types from "./types";
 import axios from "axios";
 import { put, takeEvery, call } from "redux-saga/effects";
-import avatar from "./../assets/images/avatar.png";
+//import avatar from "./../assets/images/avatar.png";
 
 /** Actions */
-export function requestLogin(values, history) {
+export function requestLogin(values, referer, history) {
   return {
     type: types.LOGIN_REQUEST,
     payload: values,
+    referer,
     history
   };
 }
@@ -58,10 +59,9 @@ function* login(action) {
     let status = "OK";
     if (status === "OK") {
       const data = getUserData();
-      console.log("User Data:", data);
       console.log("History:", action.history);
       yield put(setUserData(data));
-      action.history.replace("/profile");
+      action.history.replace(action.referer);
     }
   } catch (error) {
     console.log("[LOGIN-REQUEST]- Catching Error:", error.message);

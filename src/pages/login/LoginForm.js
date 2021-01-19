@@ -20,7 +20,16 @@ const LoginPage = props => {
           onSubmit={async (values, { setSubmitting }) => {
             console.log("Logging in:", values, props.history);
             let history = props.history;
-            dispatch(requestLogin(values, history));
+            let referer =
+              (this.props.location.state &&
+                this.props.location.state.from &&
+                this.props.location.state.from.state.referer) ||
+              "/profile";
+
+            if (_.has(this.props.location, "state.referer")) {
+              referer = this.props.location.state.referer;
+            }
+            dispatch(requestLogin(values, referer, history));
             setSubmitting(false);
           }}
           //********Using Yum for validation********/
