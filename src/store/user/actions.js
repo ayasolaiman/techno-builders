@@ -4,12 +4,10 @@ import { put, takeEvery, call } from "redux-saga/effects";
 //import avatar from "./../assets/images/avatar.png";
 
 /** Actions */
-export function requestLogin(values, referer, history) {
+export function requestLogin(values) {
   return {
     type: types.LOGIN_REQUEST,
-    payload: values,
-    referer,
-    history
+    payload: values
   };
 }
 
@@ -54,30 +52,15 @@ function* login(action) {
     //const loginData = action.payload;
     //const response = yield call(fetchLogin, loginData);
     //console.log("Login Request Result:", response);
-
-    //Mocking login scenario
-    let status = "OK";
-    if (status === "OK") {
-      const data = getUserData();
-      console.log("History:", action.history);
-      yield put(setUserData(data));
-      action.history.replace(action.referer);
-    }
+    console.log("History:");
+    //yield put(setUserData(data));
   } catch (error) {
     console.log("[LOGIN-REQUEST]- Catching Error:", error.message);
   }
 }
 
 function getUserData() {
-  const data = {
-    userImg:
-      "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg",
-    name: "Candidate Full Name",
-    email: "Candidate@techno-builder.com",
-    dateOfBirth: "1 Jan 1990",
-    phone: "012345678"
-  };
-  return data;
+  //call token request
 }
 
 function* logout() {
@@ -86,6 +69,6 @@ function* logout() {
 }
 
 export function* loginSideEffects() {
-  yield takeEvery(types.LOGIN_REQUEST, login);
-  yield takeEvery(types.LOGOUT_REQUEST, logout);
+  //yield takeEvery(types.LOGIN_REQUEST, login);
+  //yield takeEvery(types.LOGOUT_REQUEST, logout);
 }

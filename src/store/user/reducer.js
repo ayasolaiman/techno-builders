@@ -3,7 +3,14 @@ import * as types from "./types";
 const INITIAL_STATE = {
   error: undefined,
   authed: false,
-  userData: {}
+  userData: {
+    userImg:
+      "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg",
+    name: "Candidate Full Name",
+    email: "Candidate@techno-builder.com",
+    dateOfBirth: "1 Jan 1990",
+    phone: "012345678"
+  }
 };
 
 export default function userReducer(state = INITIAL_STATE, action) {
@@ -17,8 +24,7 @@ export default function userReducer(state = INITIAL_STATE, action) {
     case types.CLEAR_DATA:
       return {
         ...state,
-        authed: false,
-        userData: {}
+        authed: false
       };
     default:
       return state;

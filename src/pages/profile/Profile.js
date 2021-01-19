@@ -15,12 +15,12 @@ class Profile extends React.Component {
   }
 
   render() {
-    const userData = JSON.stringify(this.props.user.userData);
+    const userData = this.props.user;
     console.log("User Data:", userData);
 
     const handleLogout = () => {
-      this.props.history.push("/");
-      this.props.logOut();
+      //this.props.history.push("/");
+      //this.props.logOut();
     };
     return (
       <div className="prof-container">
@@ -46,14 +46,14 @@ class Profile extends React.Component {
             {userData.phone}
           </p>
         </div>
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={this.props.history.push("/")}>Logout</button>
       </div>
     );
   }
 }
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user.userData
   };
 };
 

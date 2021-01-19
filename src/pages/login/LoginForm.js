@@ -18,18 +18,9 @@ const LoginPage = props => {
         <Formik
           initialValues={{ email: "", password: "" }}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log("Logging in:", values, props.history);
-            let history = props.history;
-            let referer =
-              (this.props.location.state &&
-                this.props.location.state.from &&
-                this.props.location.state.from.state.referer) ||
-              "/profile";
-
-            if (_.has(this.props.location, "state.referer")) {
-              referer = this.props.location.state.referer;
-            }
-            dispatch(requestLogin(values, referer, history));
+            console.log("Logging in:", values, props);
+            //dispatch(requestLogin(values));
+            props.history.replace("/profile");
             setSubmitting(false);
           }}
           //********Using Yum for validation********/
