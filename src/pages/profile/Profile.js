@@ -10,9 +10,7 @@ class Profile extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    console.log("Profile props:", this.props.user);
-  }
+  componentDidMount() {}
 
   render() {
     const userData = this.props.user;
@@ -46,7 +44,7 @@ class Profile extends React.Component {
             {userData.phone}
           </p>
         </div>
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout()}>Logout</button>
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogin } from "../../store/user/actions";
 
@@ -9,7 +9,8 @@ import "./LoginForm.scss";
 
 const LoginPage = props => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const { history } = props;
+
   return (
     <div className="login-container">
       <div className="form-header">
@@ -18,12 +19,6 @@ const LoginPage = props => {
       <div className="form-body">
         <Formik
           initialValues={{ email: "", password: "" }}
-          onSubmit={async (values, { setSubmitting }) => {
-            console.log("Logging in:", values, props);
-            //dispatch(requestLogin(values));
-            history.replace("/profile");
-            setSubmitting(false);
-          }}
           //********Using Yum for validation********/
           validationSchema={Yup.object().shape({
             email: Yup.string()
@@ -34,6 +29,12 @@ const LoginPage = props => {
               .min(8, "Password is too short - should be 8 chars minimum.")
               .matches(/(?=.*[0-9])/, "Password must contain a number.")
           })}
+          onSubmit={(values, { setSubmitting }) => {
+            console.log("Logging in:", values, props.history);
+            //dispatch(requestLogin(values));
+            setSubmitting(false);
+            history.push("/profile");
+          }}
         >
           {props => {
             const {
