@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { requestLogout } from "../../store/user/actions";
+import history from "./../history";
 
 import "./Profile.scss";
 
@@ -17,7 +18,7 @@ class Profile extends React.Component {
     console.log("User Data:", userData);
 
     const handleLogout = () => {
-      this.props.history.push("/");
+      history.push("/");
       //this.props.logOut();
     };
     return (
