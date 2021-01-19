@@ -1,15 +1,15 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { requestLogin } from "../../store/user/actions";
-import history from "./../history";
 
 import "./LoginForm.scss";
 
 const LoginPage = props => {
   const dispatch = useDispatch();
+  let history = useHistory();
   return (
     <div className="login-container">
       <div className="form-header">
@@ -31,8 +31,9 @@ const LoginPage = props => {
           onSubmit={(values, { setSubmitting }) => {
             console.log("Logging in:", values, props.history);
             //dispatch(requestLogin(values));
+            //history.push("/profile");
+            window.location.href = "/profile";
             setSubmitting(false);
-            history.push("/profile");
           }}
         >
           {props => {

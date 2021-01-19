@@ -1,14 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { requestLogout } from "../../store/user/actions";
-import history from "./../history";
 
 import "./Profile.scss";
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      loggedOut: true
+    };
   }
 
   componentDidMount() {}
@@ -18,7 +20,8 @@ class Profile extends React.Component {
     console.log("User Data:", userData);
 
     const handleLogout = () => {
-      history.push("/");
+      console.log("Log out!");
+      window.location.href = "/";
       //this.props.logOut();
     };
     return (
@@ -45,7 +48,7 @@ class Profile extends React.Component {
             {userData.phone}
           </p>
         </div>
-        <button onClick={handleLogout()}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     );
   }
