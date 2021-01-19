@@ -69,6 +69,6 @@ function* logout() {
 }
 
 export function* loginSideEffects() {
-  //yield takeEvery(types.LOGIN_REQUEST, login);
-  //yield takeEvery(types.LOGOUT_REQUEST, logout);
+  yield takeEvery(types.LOGIN_REQUEST, login);
+  yield takeEvery(types.LOGOUT_REQUEST, logout);
 }

@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   authed: false,
   userData: {
     userImg:
-      "https://png.pngtree.com/element_our/20200610/ourmid/pngtree-character-default-avatar-image_2237203.jpg",
+      "https://www.clipartkey.com/mpngs/m/146-1461473_default-profile-picture-transparent.png",
     name: "Candidate Full Name",
     email: "Candidate@techno-builder.com",
     dateOfBirth: "1 Jan 1990",

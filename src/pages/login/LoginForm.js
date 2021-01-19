@@ -1,14 +1,16 @@
 import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
+import { Redirect } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { requestLogin } from "../../store/user/actions";
 
 import "./LoginForm.scss";
 
 const LoginPage = props => {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  //const { authed } = useSelector(state => state.authed);
   return (
     <div className="login-container">
       <div className="form-header">
@@ -20,7 +22,7 @@ const LoginPage = props => {
           onSubmit={async (values, { setSubmitting }) => {
             console.log("Logging in:", values, props);
             //dispatch(requestLogin(values));
-            props.history.push("/profile");
+            props.history.replace("/profile");
             setSubmitting(false);
           }}
           //********Using Yum for validation********/

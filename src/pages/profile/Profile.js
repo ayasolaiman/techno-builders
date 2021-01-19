@@ -19,7 +19,7 @@ class Profile extends React.Component {
     console.log("User Data:", userData);
 
     const handleLogout = () => {
-      //this.props.history.push("/");
+      this.props.history.push("/");
       //this.props.logOut();
     };
     return (
@@ -46,7 +46,7 @@ class Profile extends React.Component {
             {userData.phone}
           </p>
         </div>
-        <button onClick={this.props.history.push("/")}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
       </div>
     );
   }
